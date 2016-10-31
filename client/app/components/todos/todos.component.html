@@ -20,7 +20,7 @@
           (click)="setEditState(todo, false)" class="btn btn-warning">
       </div>
       <div class="col-md-4 btns">
-        <input type="button" value="Delete" class="btn btn-danger pull-right">
+        <input (click)="deleteTodo(todo)" type="button" value="Delete" class="btn btn-danger pull-right">
         <input [class.disabled]="todo.isCompleted" (click)="setEditState(todo, true)" type="button" class="btn btn-default pull-right" value="Edit">
       </div>
       <hr>

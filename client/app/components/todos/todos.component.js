@@ -69,6 +69,19 @@ var TodosComponent = (function () {
             });
         }
     };
+    TodosComponent.prototype.deleteTodo = function (todo) {
+        var todos = this.todos;
+        this._todoService.deleteTodo(todo._id)
+            .subscribe(function (data) {
+            if (data.n == 1) {
+                for (var i = 0; i < todos.length; i++) {
+                    if (todos[i]._id == todo._id) {
+                        todos.splice(i, 1);
+                    }
+                }
+            }
+        });
+    };
     TodosComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
