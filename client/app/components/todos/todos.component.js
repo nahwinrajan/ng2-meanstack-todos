@@ -54,6 +54,21 @@ var TodosComponent = (function () {
             todo.isCompleted = !todo.isCompleted;
         });
     };
+    TodosComponent.prototype.updateTodoText = function (event, todo) {
+        var _this = this;
+        if (event.which === 13) {
+            todo.text = event.target.value;
+            var _todo = {
+                _id: todo._id,
+                text: todo.text,
+                isCompleted: todo.isCompleted
+            };
+            this._todoService.updateTodo(_todo)
+                .subscribe(function (data) {
+                _this.setEditState(todo, false);
+            });
+        }
+    };
     TodosComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
